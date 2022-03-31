@@ -16,9 +16,9 @@ Another option is to right click on the repository's page and select "Open with 
 </p>
 
 ## How to install
-<!-- You can install efood-order-tracker directly from Chrome's Web Store by clicking [here](https://chrome.google.com/webstore/detail/e-food-order-tracker/eihmmfchgaebdbakpgmlgkldafickdmo).
+You can install github-to-vscode directly from Chrome's Web Store by clicking [here](https://chrome.google.com/webstore/detail/github-to-vscode/lcajicegcfldjbnodelkdmgajajdcgjd).
 
-Otherwise, you can manually install the extension by following the instructions below: -->
+Otherwise, you can manually install the extension by following the instructions below:
 
 1. Clone this repo
 2. Open Chrome (or your preferred Chromium based browser) and navigate to the extensions page (`chrome://extensions` on Chrome)

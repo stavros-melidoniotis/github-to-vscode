@@ -1,11 +1,13 @@
 
-if (document.querySelector('div[data-target="get-repo.modal"] > ul')) {
+if (document.querySelector('div[data-target="get-repo.modal"] > ul') && 
+    !document.getElementById('github-to-vscode-clone')) {
     const codeDropdownList = document.querySelector('div[data-target="get-repo.modal"] > ul')
     const repoGitLink = document.querySelector('.input-group > input').value
 
     const cloneInVScodeNode = document.createElement('li')
     const cloneInVScodeLink = document.createElement('a')
 
+    cloneInVScodeNode.id = "github-to-vscode-clone"
     cloneInVScodeNode.className = "Box-row Box-row--hover-gray p-3 mt-0"
     cloneInVScodeLink.className = "d-flex flex-items-center color-fg-default text-bold no-underline"
 

@@ -16,9 +16,7 @@ chrome.contextMenus.onClicked.addListener(() => {
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status !== 'complete') return
 
-    const githubRepoRegex = new RegExp(/^(https?:\/\/[www.]*github\.com\/.{1,255})$/g)
-
-    if (!githubRepoRegex.test(tab.url)) return
+    if (!isGithubPage(tab.url)) return
 
     chrome.scripting.executeScript({
         target: {
@@ -30,6 +28,29 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     })
 })
 
+chrome.commands.onCommand.addListener((command) => {
+    getCurrentTab()
+        .then(tab => {
+            if (!isGithubPage(tab.url)) return
+
+            if (command === "open-with-vscodedev") {
+                openWithVScodeDev(tab.url)
+            }
+
+            if (command === "clone-in-vscode") {
+                let repoUrl = tab.url
+                                .replace(/\/blob\/.{0,255}/g, '')
+                                .replace(/\/tree\/.{0,255}/g, '')
+
+                repoUrl += '.git'
+
+                cloneRepo(repoUrl)
+            }
+        })
+        .catch(err => console.error(err))
+
+})
+
 const getCurrentTab = async () => {
     const queryOptions = { active: true, currentWindow: true }
     const [tab] = await chrome.tabs.query(queryOptions)
@@ -37,8 +58,20 @@ const getCurrentTab = async () => {
     return tab
 }
 
-const openWithVScodeDev = (repoURL) => {
+const isGithubPage = (url) => {
+    const githubPageRegex = new RegExp(/^(https?:\/\/[www.]*github\.com\/.{1,255})$/g)
+
+    return githubPageRegex.test(url)
+}
+
+const openWithVScodeDev = (repoUrl) => {
     chrome.tabs.create({
-        url: `https://vscode.dev/${repoURL}`
+        url: `https://vscode.dev/${repoUrl}`
+    })
+}
+
+const cloneRepo = (repoUrl) => {
+    chrome.tabs.create({
+        url: `vscode://vscode.git/clone?url=${repoUrl}`
     })
 }

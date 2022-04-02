@@ -15,6 +15,10 @@ Another option is to right click on the repository's page and select "Open with 
   <img src="https://i.imgur.com/x0dBxm9.gif">
 </p>
 
+## Keyboard shortcuts:
+- Clone in vscode: `Ctrl+Shift+Down`
+- Open in vscode.dev: `Ctrl+Shift+Up`
+
 ## How to install
 You can install github-to-vscode directly from Chrome's Web Store by clicking [here](https://chrome.google.com/webstore/detail/github-to-vscode/lcajicegcfldjbnodelkdmgajajdcgjd).
 

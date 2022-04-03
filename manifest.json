@@ -1,7 +1,7 @@
 {
     "name": "Github to vscode",
     "description": "Quickly open github repos with vscode.dev or clone a repo directly to vscode.",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "manifest_version": 3,
     "icons": {
         "48": "./images/icons/icon-48.png",
@@ -13,13 +13,15 @@
     "commands": {
         "clone-in-vscode": {
             "suggested_key": {
-                "default": "Ctrl+Shift+Down"
+                "default": "Ctrl+Shift+Down",
+                "mac": "Command+Shift+Down"
             },
             "description": "Clone a Github repo directly to vscode"
         },
         "open-with-vscodedev": {
             "suggested_key": {
-                "default": "Ctrl+Shift+Up"
+                "default": "Ctrl+Shift+Up",
+                "mac": "Command+Shift+Up"
             },
             "description": "Quickly open Github repos with vscode.dev"
         }

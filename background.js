@@ -1,8 +1,9 @@
-
-chrome.contextMenus.create({
-    title: `Open with vscode.dev`,
-    id: 'open-with-vscode-dev',
-    documentUrlPatterns: ["https://github.com/*/*"],
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.contextMenus.create({
+        title: `Open with vscode.dev`,
+        id: 'open-with-vscode-dev',
+        documentUrlPatterns: ["https://github.com/*/*"],
+    })
 })
 
 chrome.contextMenus.onClicked.addListener(() => {
@@ -39,8 +40,9 @@ chrome.commands.onCommand.addListener((command) => {
 
             if (command === "clone-in-vscode") {
                 let repoUrl = tab.url
-                                .replace(/\/blob\/.{0,255}/g, '')
-                                .replace(/\/tree\/.{0,255}/g, '')
+                    .replace(/\/blob\/.{0,255}/g, '')
+                    .replace(/\/tree\/.{0,255}/g, '')
+                    .replace(/\/commit\/.{0,255}/g, '')
 
                 repoUrl += '.git'
 
